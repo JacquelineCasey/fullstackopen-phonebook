@@ -1,7 +1,7 @@
 'use strict';
 
-const { json } = require('express');
 const express = require('express');
+const cors = require('cors');
 const morgan = require('morgan');
 
 
@@ -17,6 +17,8 @@ morgan.token('content', (req, res) => {
 }); 
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :content')); // Log incoming requests.
+
+app.use(cors());
 
 let persons = [
     { 
@@ -88,8 +90,8 @@ function validatePerson(person) {
 
     if (person.number === undefined)
         return 'number missing';
-    if (typeof person.number !== 'number')
-        return 'number is not a number'
+    if (typeof person.number !== 'string')
+        return 'number is not a string';
 
     if (persons.find(p => p.name === person.name))
         return 'person already exists in phonebook';

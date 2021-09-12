@@ -55,8 +55,8 @@ const App = () => {
             });
         }
         /* If not, offer to update. */
-        else if(window.confirm(`${matchingPerson.name} is already in the the
-                phonebook. Would you like to update their info?`)) {
+        else if(window.confirm(`${matchingPerson.name} is already in the the ` 
+                + 'phonebook. Would you like to update their info?')) {
             PhonebookService.update(matchingPerson.id, newPerson)
                 .then(returnedPerson => {
                     setPersons(persons.map(p => p.id === returnedPerson.id ? returnedPerson : p));

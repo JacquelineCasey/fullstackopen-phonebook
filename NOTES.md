@@ -14,9 +14,25 @@ This project is involved in the following exercises:
 - 3.6: Add error handling to POST requests.
 - 3.7: Add the morgan middleware for logging.
 - 3.8: Get the logger to show data received in POST requests.
-- 3.9: 
+- 3.9: Make the backend and the frontend work together. They have been combined 
+    into one repository. We need not add functionality for updating entries yet.
 
 ## For curious minds: Middleware that executes after the route
 
 https://stackoverflow.com/questions/24258782/node-express-4-middleware-after-routes
+
+## Killing port 3001
+
+I had to do this once: 
+https://stackoverflow.com/questions/4075287/node-express-eaddrinuse-address-already-in-use-kill-server
+`lsof -i :3000`
+`kill -9 {PID}`
+
+## Getting frontend and backend to play together
+
+- Add cors to frontend middleware.
+- Make sure the frontend is targetting the right backend url (`api/persons`).
+- Realize that phone numbers are actually stored as strings, so stop rejecting
+  them for being strings.
+
   
