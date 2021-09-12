@@ -16,6 +16,7 @@ This project is involved in the following exercises:
 - 3.8: Get the logger to show data received in POST requests.
 - 3.9: Make the backend and the frontend work together. They have been combined 
     into one repository. We need not add functionality for updating entries yet.
+- 3.10: Deploy the whole thing to Heroku.
 
 ## For curious minds: Middleware that executes after the route
 
@@ -32,7 +33,20 @@ https://stackoverflow.com/questions/4075287/node-express-eaddrinuse-address-alre
 
 - Add cors to frontend middleware.
 - Make sure the frontend is targetting the right backend url (`api/persons`).
+  - Use the proxy trick (package.json), so that we can use a relative url that 
+    works for development and production on Heroku.
 - Realize that phone numbers are actually stored as strings, so stop rejecting
   them for being strings.
+
+## Deploying to Heroku
+
+- We want users to access the `build/index.html` when they navigate to `/` of the
+  heroku link / localhost:3001 (the backend).
+  - Use express's static serving: `app.use(express.static('build'))`.
+- We need to setup a build script. (`npm run build:ui`)
+  - I am forgoing adding `deploy` scripts, they seem kinda unnecessary since I 
+    automatically deploy on push to `origin/main`.
+    - If you don't want to deploy, push to another branch!
+ 
 
   

@@ -7,7 +7,7 @@ developed in part 3.
 
 The github repository can be found here: https://github.com/jackcasey067/fullstackopen-phonebook.
 
-The deployed app can be found here: _________________________________
+The deployed app can be found here: https://jack-fsopen-phonebook.herokuapp.com.
 
 The `NOTES.md` files contain notes that I have taken during development. They 
 may be out of date, refering to features that have changed or been removed.

@@ -16,9 +16,14 @@ morgan.token('content', (req, res) => {
     return '';
 }); 
 
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms :content')); // Log incoming requests.
+// Log incoming requests.
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :content')); 
 
+// Allow for Cross Origin Resource Sharing
 app.use(cors());
+
+// Have express serve stuff in build/ if it can find a match.
+app.use(express.static('build')); 
 
 let persons = [
     { 
