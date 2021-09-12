@@ -16,7 +16,10 @@ This project is involved in the following exercises:
 - 3.8: Get the logger to show data received in POST requests.
 - 3.9: Make the backend and the frontend work together. They have been combined 
     into one repository. We need not add functionality for updating entries yet.
-- 3.10: Deploy the whole thing to Heroku.
+- 3.10: Deploy the backend to Heroku.
+- 3.11: Deploy the frontend to Heroku. Make sure both production and development
+    work.
+  - PS: Both 3000 and 3001 work now. Only 3001 can serve api resources, however.
 
 ## For curious minds: Middleware that executes after the route
 
@@ -35,8 +38,6 @@ https://stackoverflow.com/questions/4075287/node-express-eaddrinuse-address-alre
 - Make sure the frontend is targetting the right backend url (`api/persons`).
   - Use the proxy trick (package.json), so that we can use a relative url that 
     works for development and production on Heroku.
-- Realize that phone numbers are actually stored as strings, so stop rejecting
-  them for being strings.
 
 ## Deploying to Heroku
 
@@ -49,3 +50,4 @@ https://stackoverflow.com/questions/4075287/node-express-eaddrinuse-address-alre
     push to another branch!
 - Add a `Procfile`.
 - Make sure we run on `process.env.PORT`, that is where Heroku wants us to run.
+PS: You can view the heroku logs online via the `More` button.
