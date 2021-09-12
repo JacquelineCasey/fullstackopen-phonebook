@@ -45,8 +45,6 @@ https://stackoverflow.com/questions/4075287/node-express-eaddrinuse-address-alre
   - Use express's static serving: `app.use(express.static('build'))`.
 - We need to setup a build script. (`npm run build:ui`)
   - I am forgoing adding `deploy` scripts, they seem kinda unnecessary since I 
-    automatically deploy on push to `origin/main`.
-    - If you don't want to deploy, push to another branch!
- 
-
-  
+    automatically deploy on push to `origin/main`. If you don't want to deploy, 
+    push to another branch!
+- Add a `Procfile`.
