@@ -10,7 +10,8 @@
     "build": "rm -r -f build && cd phonebook-frontend && npm install && npm run build && cp -r build .. && rm -r -f build"
   },
   "cacheDirectories": [
-    "node_modules", "phonebook-frontend/node_modules"
+    "node_modules", 
+    "phonebook-frontend/node_modules"
   ],
   "author": "Jack Casey",
   "license": "ISC",
