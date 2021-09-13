@@ -7,7 +7,7 @@
     "start": "node index.js",
     "test": "echo \"No test command set\"; return 1",
     "dev": "node_modules/.bin/nodemon index.js",
-    "build": "cd phonebook-frontend && npm ci && npm run build"
+    "build": "cd phonebook-frontend && npm install && npm run build"
   },
   "cacheDirectories": [
     "node_modules", 

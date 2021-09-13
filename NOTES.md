@@ -64,9 +64,11 @@ through webpack.
 For reference, a successful run of building the thing on Heroku can be found
 in `SupplementalNotes/successfulHerokuRun.txt`.
 
-I am considering the use of `npm ci` to replace `npm install`.
+I am considering the use of `npm ci` to replace `npm install`. (ci = clean install)
 https://docs.npmjs.com/cli/v7/commands/npm-ci
 - The main thing is that `package-lock.json` has to be up to data.
+- CI was almost twice as slow, as it clean installs (does not use cache)
+  - It might be good if slug size gets large and we want to remove the cache.
 
 ## Debugging
 
