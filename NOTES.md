@@ -63,3 +63,14 @@ through webpack.
 
 For reference, a successful run of building the thing on Heroku can be found
 in `SupplementalNotes/successfulHerokuRun.txt`.
+
+## Debugging
+
+In VSCode, you can go to any of the `package.json` files, and find the debug
+button that floats above the `scripts` array. Debugging a script allows you to
+debug any of the files that it ends up running, so this is a decent way to debug
+the express app. You can also hover over the individual script
+names to either run or debug them.
+
+Unfortunately, I have still not resolved the breakpoint issue for the React app. 
+In fact, this time, no breakpoints were set at all.
