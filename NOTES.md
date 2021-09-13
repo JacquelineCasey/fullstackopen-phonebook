@@ -56,5 +56,7 @@ Edit: I am making it so that heroku builds the ui itself before starting. We no
 longer send any build folders. We may use build ourselves if we really want to
 use the production version of the web app, but otherwise, we launch the frontend
 through webpack.
-
-I am trying to use `cacheDirectories` in package.json.
+- Switch that `build:ui` script to `build` so that Heroku detects and runs it at
+  build time. (https://devcenter.heroku.com/articles/nodejs-support)
+- Add a 'cacheDirectories' array to make the process faster
+  (see: https://github.com/mars/heroku-cra-node/blob/master/package.json)
