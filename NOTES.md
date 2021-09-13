@@ -60,3 +60,6 @@ through webpack.
   build time. (https://devcenter.heroku.com/articles/nodejs-support)
 - Add a 'cacheDirectories' array to make the process faster
   (see: https://github.com/mars/heroku-cra-node/blob/master/package.json)
+
+For reference, a successful run of building the thing on Heroku can be found
+in `SupplementalNotes/successfulHerokuRun.txt`.

@@ -1,0 +1,95 @@
+Activity Feed  Build LogID 25a5a888-b9fd-4e3f-9958-c2f5c9534911
+-----> Building on the Heroku-20 stack
+-----> Using buildpack: heroku/nodejs
+-----> Node.js app detected
+       
+-----> Creating runtime environment
+       
+       NPM_CONFIG_LOGLEVEL=error
+       NODE_VERBOSE=false
+       NODE_ENV=production
+       NODE_MODULES_CACHE=true
+       
+-----> Installing binaries
+       engines.node (package.json):  unspecified
+       engines.npm (package.json):   unspecified (use default)
+       
+       Resolving node version 14.x...
+       Downloading and installing node 14.17.6...
+       Using default npm version: 6.14.15
+       
+-----> Restoring cache
+       Loading 2 from cacheDirectories (package.json):
+       - node_modules
+       - phonebook-frontend/node_modules
+       
+-----> Installing dependencies
+       Installing node modules
+       
+       > nodemon@2.0.12 postinstall /tmp/build_6389a273/node_modules/nodemon
+       > node bin/postinstall || exit 0
+       
+       Love nodemon? You can now support the project via the open collective:
+        > https://opencollective.com/nodemon/donate
+       
+       added 174 packages in 2.97s
+       
+-----> Build
+       Running build
+       
+       > phonebook-backend@0.0.1 build /tmp/build_6389a273
+       > rm -r -f build && cd phonebook-frontend && npm install && npm run build && cp -r build ..
+       
+       audited 2079 packages in 16.226s
+       
+       146 packages are looking for funding
+         run `npm fund` for details
+       
+       found 3 moderate severity vulnerabilities
+         run `npm audit fix` to fix them, or `npm audit` for details
+       
+       > phonebook@0.1.0 build /tmp/build_6389a273/phonebook-frontend
+       > react-scripts build
+       
+       Creating an optimized production build...
+       Compiled successfully.
+       
+       File sizes after gzip:
+       
+         48.68 KB  build/static/js/2.ee25c4b1.chunk.js
+         1.44 KB   build/static/js/main.974763db.chunk.js
+         773 B     build/static/js/runtime-main.5ef5b0d4.js
+         281 B     build/static/css/main.b66aabc7.chunk.css
+       
+       The project was built assuming it is hosted at /.
+       You can control this with the homepage field in your package.json.
+       
+       The build folder is ready to be deployed.
+       You may serve it with a static server:
+       
+         npm install -g serve
+         serve -s build
+       
+       Find out more about deployment here:
+       
+         https://cra.link/deployment
+       
+       
+-----> Caching build
+       Saving 2 cacheDirectories (package.json):
+       - node_modules
+       - phonebook-frontend/node_modules
+       
+-----> Pruning devDependencies
+       removed 117 packages and audited 56 packages in 1.801s
+       found 0 vulnerabilities
+       
+       
+-----> Build succeeded!
+-----> Discovering process types
+       Procfile declares types -> web
+-----> Compressing...
+       Done: 70.4M
+-----> Launching...
+       Released v13
+       https://jack-fsopen-phonebook.herokuapp.com/ deployed to Heroku
