@@ -56,3 +56,5 @@ Edit: I am making it so that heroku builds the ui itself before starting. We no
 longer send any build folders. We may use build ourselves if we really want to
 use the production version of the web app, but otherwise, we launch the frontend
 through webpack.
+
+I am trying to use `cacheDirectories` in package.json.
