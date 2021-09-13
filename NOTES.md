@@ -41,10 +41,10 @@ https://stackoverflow.com/questions/4075287/node-express-eaddrinuse-address-alre
 
 ## Deploying to Heroku
 
-- We want users to access the `build/index.html` when they navigate to `/` of the
-  heroku link / localhost:3001 (the backend).
-  - Use express's static serving: `app.use(express.static('build'))`.
-- We need to setup a build script. (`npm run build:ui`)
+- We want users to access the `phonebook-frontend/build/index.html` when they 
+- navigate to `/` of the heroku link / localhost:3001 (the backend).
+  - Use express's static serving: `app.use(express.static('phonebook-frontend/build'))`.
+- We need to setup a build script. (`npm run build`)
   - I am forgoing adding `deploy` scripts, they seem kinda unnecessary since I 
     automatically deploy on push to `origin/main`. If you don't want to deploy, 
     push to another branch!

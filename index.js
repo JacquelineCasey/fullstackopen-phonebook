@@ -9,6 +9,12 @@ const app = express();
 
 app.use(express.json());
 
+// Allow for Cross Origin Resource Sharing
+app.use(cors());
+
+// Have express serve stuff in build/ if it can find a match.
+app.use(express.static('phonebook-frontend/build')); 
+
 // Define a new token (:content)
 morgan.token('content', (req, res) => {
     if (req.method === 'POST')
@@ -16,14 +22,8 @@ morgan.token('content', (req, res) => {
     return '';
 }); 
 
-// Log incoming requests.
+// Log incoming requests. (But not CORS or static requests, as this is below)
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :content')); 
-
-// Allow for Cross Origin Resource Sharing
-app.use(cors());
-
-// Have express serve stuff in build/ if it can find a match.
-app.use(express.static('build')); 
 
 let persons = [
     { 
