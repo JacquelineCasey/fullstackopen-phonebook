@@ -10,7 +10,7 @@
     "build": "cd phonebook-frontend && npm install && npm run build"
   },
   "cacheDirectories": [
-    "node_modules", 
+    "node_modules",
     "phonebook-frontend/node_modules"
   ],
   "author": "Jack Casey",
@@ -18,6 +18,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mongoose": "^6.0.5",
     "morgan": "^1.10.0"
   },
   "devDependencies": {

@@ -20,6 +20,10 @@ This project is involved in the following exercises:
 - 3.11: Deploy the frontend to Heroku. Make sure both production and development
     work.
   - PS: Both 3000 and 3001 work now. Only 3001 can serve api resources, however.
+- 3.12: Set up a MongoDB database, and write a utility file `mongo.js` that can be
+    used in the following ways:
+    - `npm mongo.js <PASSWORD> "full name" 123-233-4444` to add an entry
+    - `npm mongo.js <PASSWORD>` to list entries.
 
 ## For curious minds: Middleware that executes after the route
 
@@ -80,3 +84,12 @@ names to either run or debug them.
 
 Unfortunately, I have still not resolved the breakpoint issue for the React app. 
 In fact, this time, no breakpoints were set at all.
+
+## process.argv
+
+`process.argv` is an array that contains the arguments associated with the process.
+The name of the program is the first (index 0) argument, so for `node mongo.js <password>`:
+- `process.argv[0] = node (expanded, technically)`
+- `process.argv[1] = mongo.js (expanded, technically)`
+- `process.argv[2] = <password>`
+- `process.argv.length = 3`
