@@ -95,7 +95,7 @@ const App = () => {
 
     return (
         <div>
-            <h2>Phonebook</h2>
+            <h2>Phonebook: Will changes appear?</h2>
             <Notification notification={notificationState}/>
             <Filter value={filterTarget} onChange={handleFilterFieldChange}/>
 
