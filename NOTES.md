@@ -51,3 +51,8 @@ https://stackoverflow.com/questions/4075287/node-express-eaddrinuse-address-alre
 - Add a `Procfile`.
 - Make sure we run on `process.env.PORT`, that is where Heroku wants us to run.
 PS: You can view the heroku logs online via the `More` button.
+
+Edit: I am making it so that heroku builds the ui itself before starting. We no
+longer send any build folders. We may use build ourselves if we really want to
+use the production version of the web app, but otherwise, we launch the frontend
+through webpack.
