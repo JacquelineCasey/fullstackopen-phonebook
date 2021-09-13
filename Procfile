@@ -1,1 +1,1 @@
-web: npm run build:ui && npm start
+web: rm -r -f build && cd phonebook-frontend && npm run build && cp -r build .. && npm start
