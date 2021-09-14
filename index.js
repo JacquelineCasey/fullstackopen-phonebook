@@ -34,26 +34,27 @@ app.get('/info', (request, response) => {
                    <p> ${new Date()} </p>`);
 });
 
-app.get('/api/persons', (request, response) => {
+app.get('/api/persons', (request, response, next) => {
     Person.find({}).then(persons => {
         response.json(persons);
-    });
+    })
+    .catch(error => next(error));
 });
 
 // TODO: Handle case where incoming id is not in database.
-app.get('/api/persons/:id', (request, response) => {
+app.get('/api/persons/:id', (request, response, next) => {
     Person.findById(request.params.id).then(person => {
         response.json(person);
-    });
+    })
+    .catch(error => next(error));
 });
 
 app.delete('/api/persons/:id', (request, response, next) => {
-    Person.findByIdAndDelete(request.params.id)
-        .then(removed => {
-            /* Could differentiate already deleted vs actual delete here in the future. */
-            response.status(204).end(); // No Content
-        })
-        .catch(error => next(error));
+    Person.findByIdAndDelete(request.params.id).then(removed => {
+        /* Could differentiate already deleted vs actual delete here in the future. */
+        response.status(204).end(); // No Content
+    })
+    .catch(error => next(error));
 });
 
 // Returns a string error, or "" if no error.
@@ -77,7 +78,7 @@ function validatePerson(person) {
     return ''; // No problems detected.
 }  
 
-app.post('/api/persons', (request, response) => {
+app.post('/api/persons', (request, response, next) => {
     const input = request.body;
     const error = validatePerson(input);
 
@@ -89,7 +90,10 @@ app.post('/api/persons', (request, response) => {
         number: input.number,
     });
 
-    person.save().then(savedPerson => response.json(savedPerson));
+    person.save().then(savedPerson => {
+        response.json(savedPerson);
+    })
+    .catch(error => next(error));
 });
 
 
