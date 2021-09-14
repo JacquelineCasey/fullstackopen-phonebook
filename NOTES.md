@@ -30,6 +30,7 @@ This project is involved in the following exercises:
     worry about multiple entries / editing entries.
 - 3.15: Make DELETE requests work with the database. Check that the frontend works.
 - 3.16: Add error handling middleware (refactor).
+- 3.17: Handle put request, which the frontend makes after trying to update someone.
 
 ## For curious minds: Middleware that executes after the route
 

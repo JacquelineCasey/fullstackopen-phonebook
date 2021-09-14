@@ -44,7 +44,10 @@ app.get('/api/persons', (request, response, next) => {
 // TODO: Handle case where incoming id is not in database.
 app.get('/api/persons/:id', (request, response, next) => {
     Person.findById(request.params.id).then(person => {
-        response.json(person);
+        if (person)
+            response.json(person);
+        else
+            response.status(404).end(); // Not Found
     })
     .catch(error => next(error));
 });
@@ -67,7 +70,7 @@ function validatePerson(person) {
     if (typeof person.name !== 'string')
         return 'name is not a string';
 
-    if (person.number === undefined)
+    if (!person.number)
         return 'number missing';
     if (typeof person.number !== 'string')
         return 'number is not a string';
@@ -79,19 +82,41 @@ function validatePerson(person) {
 }  
 
 app.post('/api/persons', (request, response, next) => {
-    const input = request.body;
-    const error = validatePerson(input);
+    const receivedPerson = request.body;
+    const error = validatePerson(receivedPerson);
 
     if (error)
-        return response.status(400).json({error}); // Bad Request
+        return next({name: 'ValidationError', message: error});
 
     const person = new Person({ // ID handled by database
-        name: input.name, 
-        number: input.number,
+        name: receivedPerson.name, 
+        number: receivedPerson.number,
     });
 
     person.save().then(savedPerson => {
         response.json(savedPerson);
+    })
+    .catch(error => next(error));
+});
+
+app.put('/api/persons/:id', (request, response, next) => {
+    const receivedPerson = request.body;
+    const error = validatePerson(receivedPerson);
+
+    if (error)
+        return next({name: 'ValidationError', message: error});
+
+    const personToSend = {
+        name: receivedPerson.name,
+        number: receivedPerson.number
+    };
+
+    // {new: true} will make this pass the updated person (instead of the old person)
+    Person.findByIdAndUpdate(request.params.id, personToSend, {new: true}).then(updatedPerson => {
+        if (updatedPerson)
+            response.json(updatedPerson);
+        else
+            response.status(404).end(); // Not Found
     })
     .catch(error => next(error));
 });
@@ -101,8 +126,11 @@ const handleErrors = ((error, request, response, next) => {
     console.error(error.message);
 
     if (error.name == 'CastError') {
-        return response.status(400).send({error: 'malformatted id'});
+        return response.status(400).send({error: 'malformatted id'}); // Bad Request
     }
+
+    if (error.name == 'ValidationError')
+        return response.status(400).send({error: error.message}); // Bad Request
 
     next(error);
 });
