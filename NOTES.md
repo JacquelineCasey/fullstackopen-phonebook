@@ -24,6 +24,8 @@ This project is involved in the following exercises:
     used in the following ways:
     - `npm mongo.js <PASSWORD> "full name" 123-233-4444` to add an entry
     - `npm mongo.js <PASSWORD>` to list entries.
+- 3.13: Change fetching of phonebook entries so that data is fetched from the database.
+  - Verify that the frontend and backend still work.
 
 ## For curious minds: Middleware that executes after the route
 
