@@ -31,6 +31,7 @@ This project is involved in the following exercises:
 - 3.15: Make DELETE requests work with the database. Check that the frontend works.
 - 3.16: Add error handling middleware (refactor).
 - 3.17: Handle put request, which the frontend makes after trying to update someone.
+- 3.18: Ensure the `/info` and `api/persons/:id` routes work with the database.
 
 ## For curious minds: Middleware that executes after the route
 

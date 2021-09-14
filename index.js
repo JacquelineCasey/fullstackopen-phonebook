@@ -29,9 +29,12 @@ morgan.token('content', (req, res) => {
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :content')); 
 
 
-app.get('/info', (request, response) => {
-    response.send(`<p> Phonebook has info for ${persons.length} people. </p> 
-                   <p> ${new Date()} </p>`);
+app.get('/info', (request, response, next) => {
+    Person.find({}).then(persons => {
+        response.send(`<p> Phonebook has info for ${persons.length} people. </p> 
+                       <p> ${new Date()} </p>`);
+    })
+    .catch(error => next(error));
 });
 
 app.get('/api/persons', (request, response, next) => {
@@ -125,10 +128,8 @@ app.put('/api/persons/:id', (request, response, next) => {
 const handleErrors = ((error, request, response, next) => {
     console.error(error.message);
 
-    if (error.name == 'CastError') {
+    if (error.name == 'CastError')
         return response.status(400).send({error: 'malformatted id'}); // Bad Request
-    }
-
     if (error.name == 'ValidationError')
         return response.status(400).send({error: error.message}); // Bad Request
 
