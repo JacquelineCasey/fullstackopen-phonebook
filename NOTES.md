@@ -29,6 +29,7 @@ This project is involved in the following exercises:
 - 3.14: Make it so that new entries are saved on the database. You do not need to
     worry about multiple entries / editing entries.
 - 3.15: Make DELETE requests work with the database. Check that the frontend works.
+- 3.16: Add error handling middleware (refactor).
 
 ## For curious minds: Middleware that executes after the route
 
