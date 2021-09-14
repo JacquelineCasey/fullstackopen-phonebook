@@ -26,6 +26,8 @@ This project is involved in the following exercises:
     - `npm mongo.js <PASSWORD>` to list entries.
 - 3.13: Change fetching of phonebook entries so that data is fetched from the database.
   - Verify that the frontend and backend still work.
+- 3.14: Make it so that new entries are saved on the database. You do not need to
+    worry about multiple entries / editing entries.
 
 ## For curious minds: Middleware that executes after the route
 

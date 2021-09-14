@@ -48,19 +48,18 @@ app.get('/api/persons/:id', (request, response) => {
 });
 
 app.delete('/api/persons/:id', (request, response) => {
-    const id = Number(request.params.id);
+    response.status(501).end(); // Not Implemented
 
-    const foundPerson = persons.find(p => p.id === id);
-    if (foundPerson) {
-        persons = persons.filter(p => p.id !== id)
-        response.status(204).end(); // No Content
-    }
-    else 
-        response.status(204).end(); // No Content
+    // const id = Number(request.params.id);
+
+    // const foundPerson = persons.find(p => p.id === id);
+    // if (foundPerson) {
+    //     persons = persons.filter(p => p.id !== id)
+    //     response.status(204).end(); // No Content
+    // }
+    // else 
+    //     response.status(204).end(); // No Content
 });
-
-// The max value is not enforced by javascript, but feels traditional enough to use here.
-const max_id = Math.pow(2, 31) - 1;
 
 // Returns a string error, or "" if no error.
 function validatePerson(person) {
@@ -77,8 +76,8 @@ function validatePerson(person) {
     if (typeof person.number !== 'string')
         return 'number is not a string';
 
-    if (persons.find(p => p.name === person.name))
-        return 'person already exists in phonebook';
+    // if (persons.find(p => p.name === person.name)) // persons temporarily does not exist.
+    //     return 'person already exists in phonebook';
     
     return ''; // No problems detected.
 }  
@@ -90,13 +89,12 @@ app.post('/api/persons', (request, response) => {
     if (error)
         return response.status(400).json({error}); // Bad Request
 
-    const newPerson = {
+    const person = new Person({ // ID handled by database
         name: input.name, 
         number: input.number,
-        id: Math.floor(Math.random() * max_id)
-    };
-    persons = persons.concat(newPerson);
-    response.json(newPerson);
+    });
+
+    person.save().then(savedPerson => response.json(savedPerson));
 });
 
 

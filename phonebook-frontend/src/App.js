@@ -83,8 +83,12 @@ const App = () => {
                 addNotification(`Deleted ${person.name}`);
             })
             .catch(() => {
-                addNotification(`Entry on ${person.name} had already been deleted from the server.`, true); // true = warning
-                setPersons(persons.filter(p => p.id !== person.id));
+                // 501 Not Implemented
+                addNotification('Error: server responded with 501 Not Implemented (probably).', true);
+
+                // 404: not sent, we currently send 204 No Content (Success) on no deletion
+                // addNotification(`Entry on ${person.name} had already been deleted from the server.`, true); // true = warning
+                // setPersons(persons.filter(p => p.id !== person.id));
             });
     };
 
