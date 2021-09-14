@@ -8,9 +8,9 @@ GET http://localhost:3001/api/persons/2
 GET http://localhost:3001/api/persons/1000
 
 ### Should Send 204 No Content, delete the entry
-DELETE http://localhost:3001/api/persons/2
+DELETE http://localhost:3001/api/persons/6140042cd142b06b57ba25dc
 
-### Should Send 204 No Content, delete no entries.
+### Should Send 400 Bad Request, error code.
 DELETE http://localhost:3001/api/persons/1000
 
 ### Should Return the formed person. The state should be updated.
