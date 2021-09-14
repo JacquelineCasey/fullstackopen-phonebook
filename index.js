@@ -48,17 +48,12 @@ app.get('/api/persons/:id', (request, response) => {
 });
 
 app.delete('/api/persons/:id', (request, response) => {
-    response.status(501).end(); // Not Implemented
-
-    // const id = Number(request.params.id);
-
-    // const foundPerson = persons.find(p => p.id === id);
-    // if (foundPerson) {
-    //     persons = persons.filter(p => p.id !== id)
-    //     response.status(204).end(); // No Content
-    // }
-    // else 
-    //     response.status(204).end(); // No Content
+    Person.findByIdAndDelete(request.params.id)
+        .then(removed => {
+            /* Could differentiate already deleted vs actual delete here in the future. */
+            response.status(204).end(); // No Content
+        })
+        .catch(error => next(error));
 });
 
 // Returns a string error, or "" if no error.
@@ -96,6 +91,9 @@ app.post('/api/persons', (request, response) => {
 
     person.save().then(savedPerson => response.json(savedPerson));
 });
+
+
+
 
 
 const PORT = process.env.PORT;
