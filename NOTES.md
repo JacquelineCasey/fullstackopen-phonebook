@@ -38,6 +38,9 @@ This project is involved in the following exercises:
 - 3.20: Validation: Name must be at least 3 characters, and number must be at least 8.
     - Both are required fields.
     - Expand the frontend to show errors in these cases. They can be the (ugly) mongoose output.
+- 3.21: Push the Heroku and verify it works there.
+    - The way I have it set up: All pushes to `origin/main` also go to Heroku,
+      and Heroku know how to build it there.
 
 ## For curious minds: Middleware that executes after the route
 
