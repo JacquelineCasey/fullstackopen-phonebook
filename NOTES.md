@@ -116,3 +116,8 @@ it could be npm overstepping. https://stackoverflow.com/questions/66239691/what-
 
 See also: https://www.npmjs.com/package/mongoose-unique-validator
 
+## Update validators.
+
+Update validators are off by default, so we pass in the options `{runValidators: true}`.
+
+The uniqueness rule requires `{ runValidators: true, context: 'query' }` for technical reasons (see docs).

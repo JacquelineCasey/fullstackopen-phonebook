@@ -46,5 +46,14 @@ Content-Type: application/json
 
 {
     "name": "Jack",
-    "number": "2"
+    "number": "12341234"
+}
+
+###
+PUT http://localhost:3001/api/persons/61410300754786b05678549e
+Content-Type: application/json
+
+{
+    "name": "Some Else2",
+    "number": "12341234"
 }

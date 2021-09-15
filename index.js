@@ -63,33 +63,11 @@ app.delete('/api/persons/:id', (request, response, next) => {
     .catch(error => next(error));
 });
 
-// Returns a string error, or "" if no error.
-function validatePerson(person) {
-    if (!person)
-        return 'missing person';
-
-    if (!person.name)
-        return 'name missing';
-    if (typeof person.name !== 'string')
-        return 'name is not a string';
-
-    if (!person.number)
-        return 'number missing';
-    if (typeof person.number !== 'string')
-        return 'number is not a string';
-
-    // if (persons.find(p => p.name === person.name)) // persons temporarily does not exist.
-    //     return 'person already exists in phonebook';
-    
-    return ''; // No problems detected.
-}  
-
 app.post('/api/persons', (request, response, next) => {
     const receivedPerson = request.body;
-    const error = validatePerson(receivedPerson);
 
-    if (error)
-        return next({name: 'ValidationError', message: error});
+    if (!receivedPerson)
+        return next({name: 'ValidationError', message: 'sent person was undefined or null'});
 
     const person = new Person({ // ID handled by database
         name: receivedPerson.name, 
@@ -104,10 +82,9 @@ app.post('/api/persons', (request, response, next) => {
 
 app.put('/api/persons/:id', (request, response, next) => {
     const receivedPerson = request.body;
-    const error = validatePerson(receivedPerson);
 
-    if (error)
-        return next({name: 'ValidationError', message: error});
+    if (!receivedPerson)
+        return next({name: 'ValidationError', message: 'sent person was undefined or null'});
 
     const personToSend = {
         name: receivedPerson.name,
@@ -115,13 +92,14 @@ app.put('/api/persons/:id', (request, response, next) => {
     };
 
     // {new: true} will make this pass the updated person (instead of the old person)
-    Person.findByIdAndUpdate(request.params.id, personToSend, {new: true}).then(updatedPerson => {
-        if (updatedPerson)
-            response.json(updatedPerson);
-        else
-            response.status(404).end(); // Not Found
-    })
-    .catch(error => next(error));
+    Person.findByIdAndUpdate(request.params.id, personToSend, {new: true, runValidators: true, context: 'query'})
+        .then(updatedPerson => {
+            if (updatedPerson)
+                response.json(updatedPerson);
+            else
+                response.status(404).end(); // Not Found
+        })
+        .catch(error => next(error));
 });
 
 
