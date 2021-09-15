@@ -114,7 +114,7 @@ const handleErrors = ((error, request, response, next) => {
     next(error);
 });
 
-app.use(handleErrors)
+app.use(handleErrors);
 
 
 const PORT = process.env.PORT;
