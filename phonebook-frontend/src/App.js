@@ -49,10 +49,16 @@ const App = () => {
         
         /* Check if newPerson is unique. */
         if (matchingPerson === undefined) {
-            PhonebookService.create(newPerson).then(returnedPerson => {
-                setPersons(persons.concat(returnedPerson));
-                addNotification(`Added ${newPerson.name}`);
-            });
+            PhonebookService
+                .create(newPerson)
+                .then(returnedPerson => {
+                    setPersons(persons.concat(returnedPerson));
+                    addNotification(`Added ${newPerson.name}`);
+                })
+                .catch(error => {
+                    console.log(error.response.data);
+                    addNotification(error.response.data.error, true);
+                });
         }
         /* If not, offer to update. */
         else if(window.confirm(`${matchingPerson.name} is already in the the ` 
@@ -62,10 +68,15 @@ const App = () => {
                     setPersons(persons.map(p => p.id === returnedPerson.id ? returnedPerson : p));
                     addNotification(`Updated ${newPerson.name}`);
                 })
-                .catch(() => {
-                    addNotification(`Entry on ${matchingPerson.name} had already been deleted from the server.`, true); // true = warning.
-                    setPersons(persons.filter(p => p.id !== matchingPerson.id));
-                })
+                .catch(error => {
+                    console.log(error.response.data);
+                    if (error.response.status === 404) {
+                        addNotification(`Entry on ${matchingPerson.name} had already been deleted from the server.`, true);
+                        setPersons(persons.filter(p => p.id !== matchingPerson.id));
+                    }
+                    else
+                        addNotification(error.response.data.error, true);
+                });
         }
         
         setNewName('');
