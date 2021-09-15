@@ -32,6 +32,9 @@ This project is involved in the following exercises:
 - 3.16: Add error handling middleware (refactor).
 - 3.17: Handle put request, which the frontend makes after trying to update someone.
 - 3.18: Ensure the `/info` and `api/persons/:id` routes work with the database.
+- 3.19: Add validation so that every added person must have a different name.
+    - Frontend already ensures this, so use POSTMAN / VSCode REST to test this.
+    - Use the package `mongoose-unique-validator`.
 
 ## For curious minds: Middleware that executes after the route
 
@@ -101,3 +104,12 @@ The name of the program is the first (index 0) argument, so for `node mongo.js <
 - `process.argv[1] = mongo.js (expanded, technically)`
 - `process.argv[2] = <password>`
 - `process.argv.length = 3`
+  
+## mongoose-unique-validator
+
+Was installed with `npm install -legacy-peer-deps mongoose-unique-validator`, so
+it may be somewhat broken with the current version of mongoose. Alternatively,
+it could be npm overstepping. https://stackoverflow.com/questions/66239691/what-does-npm-install-legacy-peer-deps-do-exactly-when-is-it-recommended-wh
+
+See also: https://www.npmjs.com/package/mongoose-unique-validator
+
