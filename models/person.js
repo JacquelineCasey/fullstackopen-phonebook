@@ -13,9 +13,15 @@ mongoose.connect(process.env.MONGODB_URI)
 const personSchema = new mongoose.Schema ({
     name: {
         type: String,
+        minLength: 3,
+        required: true,
         unique: true
     },
-    number: String
+    number: {
+        type: String,
+        minLength: 8,
+        required: true
+    }
 });
 
 personSchema.plugin(uniqueValidator);

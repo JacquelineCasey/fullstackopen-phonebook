@@ -1,19 +1,19 @@
-### Should Send All Persons
+###
 GET http://localhost:3001/api/persons
 
-### Should Send One Person
+###
 GET http://localhost:3001/api/persons/2
 
-### Should Send 404 Not Found
+###
 GET http://localhost:3001/api/persons/1000
 
-### Should Send 204 No Content, delete the entry
+###
 DELETE http://localhost:3001/api/persons/6140042cd142b06b57ba25dc
 
-### Should Send 400 Bad Request, error code.
+###
 DELETE http://localhost:3001/api/persons/1000
 
-### Should Return the formed person. The state should be updated.
+###
 POST http://localhost:3001/api/persons
 Content-Type: application/json
 
@@ -22,26 +22,25 @@ Content-Type: application/json
     "number": "1234"
 }
 
-### Bad Request
+###
 POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "name": "Jimmy"
+    "name": "Ji",
+    "number": "12345678"
 }
 
-
-### Bad Request
+###
 POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
     "name": "Arto Hellas",
-    "number": 2
+    "number": "2"
 }
 
-
-### PUT
+###
 PUT http://localhost:3001/api/persons/614003e0d142b06b57ba25d4
 Content-Type: application/json
 

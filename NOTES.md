@@ -35,6 +35,9 @@ This project is involved in the following exercises:
 - 3.19: Add validation so that every added person must have a different name.
     - Frontend already ensures this, so use POSTMAN / VSCode REST to test this.
     - Use the package `mongoose-unique-validator`.
+- 3.20: Validation: Name must be at least 3 characters, and number must be at least 8.
+    - Both are required fields.
+    - Expand the frontend to show errors in these cases. They can be the (ugly) mongoose output.
 
 ## For curious minds: Middleware that executes after the route
 
