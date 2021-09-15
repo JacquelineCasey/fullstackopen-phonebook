@@ -41,7 +41,7 @@ if (process.argv.length === 5) {
 /* Print out all people in the database */
 if (process.argv.length === 3) {
     Person.find({}).then(result => {
-        console.log("Phonebook: ");
+        console.log('Phonebook: ');
         result.forEach(person => {
             console.log(person.name, person.number);
         });

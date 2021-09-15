@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 require('dotenv').config();
 const mongoose = require('mongoose');
@@ -6,7 +6,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 
 mongoose.connect(process.env.MONGODB_URI)
-    .then(result => console.log('connected to MongoDB'))
+    .then(() => console.log('connected to MongoDB')) // Accepts param result
     .catch(error => console.log('error connecting to MongoDB:', error.message));
 
 // MongoDB adds its own id, so we don't use ours.
